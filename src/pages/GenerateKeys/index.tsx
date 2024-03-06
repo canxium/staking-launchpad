@@ -43,12 +43,6 @@ export enum operatingSystem {
   'WINDOWS',
 }
 
-const osMapping: { [os: number]: 'mac' | 'linux' | 'windows' } = {
-  [operatingSystem.MAC]: 'mac',
-  [operatingSystem.LINUX]: 'linux',
-  [operatingSystem.WINDOWS]: 'windows',
-};
-
 export enum keysTool {
   'CLI',
   'GUI',
@@ -100,12 +94,11 @@ const _GenerateKeysPage = ({
     mnemonicAcknowledgementChecked,
     setMnemonicAcknowledgementChecked,
   ] = useState<boolean>(workflow > WorkflowStep.GENERATE_KEY_PAIRS);
-  const [chosenOs] = useState<operatingSystem>(operatingSystem.LINUX);
   const [withdrawalAddress, setWithdrawalAddress] = useState<string>('');
 
   // Default to CLI on mainnet for now, once we have more confidence in it, switch to GUI as default.
   const defaultKeysTool = IS_MAINNET ? keysTool.CLI : keysTool.GUI;
-  const [chosenTool, setChosenTool] = useState<keysTool>(defaultKeysTool);
+  const [chosenTool] = useState<keysTool>(defaultKeysTool);
 
   const onCheckboxClick = (e: any) => {
     setMnemonicAcknowledgementChecked(e.target.checked);
@@ -161,13 +154,7 @@ const _GenerateKeysPage = ({
         </NumValidatorContainer>
       </Paper>
 
-      <Instructions
-        validatorCount={validatorCount}
-        withdrawalAddress={isValidWithdrawalAddress ? withdrawalAddress : ''}
-        os={osMapping[chosenOs]}
-        chosenTool={chosenTool}
-        setChosenTool={setChosenTool}
-      />
+      <Instructions />
 
       <Paper className="mt20">
         <Heading level={2} size="small" color="blueMedium">

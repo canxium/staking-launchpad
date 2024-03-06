@@ -13,18 +13,14 @@ interface Props {
   setChosenTool: (tool: keysTool) => void;
 }
 
-export const Instructions = ({
-  validatorCount,
-  withdrawalAddress,
-  os,
-}: Props) => {
+export const Instructions = () => {
   return (
     <Paper className="mt20" style={{ animation: 'fadeIn 1s' }}>
       <Heading level={2} size="small" color="blueMedium">
         <FormattedMessage defaultMessage="Generate your keys" />
       </Heading>
       <div>
-        <Option1 {...{ validatorCount, withdrawalAddress, os }} />
+        <Option1 />
       </div>
     </Paper>
   );
