@@ -1,6 +1,6 @@
 export const IS_MAINNET                 = Boolean(process.env.REACT_APP_IS_MAINNET !== 'false');  // If REACT_APP_IS_MAINNET is unset, set it to true by default
 export const IS_NON_INFURA_TESTNET      = !IS_MAINNET && process.env.REACT_APP_RPC_URL
-export const TESTNET_LAUNCHPAD_NAME     = process.env.REACT_APP_TESTNET_LAUNCHPAD_NAME || 'Goerli';
+export const TESTNET_LAUNCHPAD_NAME     = process.env.REACT_APP_TESTNET_LAUNCHPAD_NAME || 'Cerium';
 
 // private vars (or derived from)
 export const PORTIS_DAPP_ID             = process.env.REACT_APP_PORTIS_DAPP_ID     || '';
@@ -9,8 +9,8 @@ export const ENABLE_RPC_FEATURES        = Boolean(INFURA_PROJECT_ID && INFURA_PR
 export const RPC_URL                    = process.env.REACT_APP_RPC_URL ||  (`https://${IS_MAINNET ? "mainnet" : "goerli"}.infura.io/v3/${INFURA_PROJECT_ID}`);
 
 // public
-export const NETWORK_NAME               = IS_MAINNET ? 'Mainnet' : TESTNET_LAUNCHPAD_NAME;
-export const TICKER_NAME                = IS_MAINNET ? 'ETH' : 'TestnetETH';
+export const NETWORK_NAME               = IS_MAINNET ? 'Canxium' : TESTNET_LAUNCHPAD_NAME;
+export const TICKER_NAME                = IS_MAINNET ? 'CAU' : 'TestnetCAU';
 export const ETHERSCAN_URL              = IS_MAINNET ? 'https://etherscan.io/tx' : `https://${TESTNET_LAUNCHPAD_NAME.toLowerCase()}.etherscan.io/tx`;
 export const BEACONSCAN_URL             = IS_MAINNET ? 'https://beaconscan.com/validator' : `https://beaconscan.com/${NETWORK_NAME.toLowerCase()}/validator`;
 export const BEACONCHAIN_URL            = (IS_NON_INFURA_TESTNET && process.env.REACT_APP_BEACONCHAIN_URL) ||  `https://${NETWORK_NAME.toLowerCase()}.beaconcha.in`;
@@ -52,6 +52,7 @@ export const ETH_DEPOSIT_OFFSET = Number(process.env.REACT_APP_ETH_DEPOSIT_OFFSE
 let forkVersion = Buffer.from('00000000', 'hex')
 if(typeof process.env.REACT_APP_GENESIS_FORK_VERSION === 'string'){
     forkVersion = Buffer.from(process.env.REACT_APP_GENESIS_FORK_VERSION.replace(/0x/g, ''), 'hex');
+    console.log("forkVersion: ", forkVersion.toString(), process.env.REACT_APP_GENESIS_FORK_VERSION)
 }
 export const GENESIS_FORK_VERSION = forkVersion;
 
@@ -69,6 +70,7 @@ export const EJECTION_PRICE             = process.env.REACT_APP_EJECTION_PRICE |
 // BLS signature verification variables
 export const ETHER_TO_GWEI              = 1e9;
 export const MIN_DEPOSIT_AMOUNT         = 1 * ETHER_TO_GWEI;
+export const MAX_DEPOSIT_AMOUNT         = Number(process.env.REACT_APP_PRICE_PER_VALIDATOR || '32') * ETHER_TO_GWEI;
 export const DOMAIN_DEPOSIT             = Buffer.from('03000000', 'hex');
 export const EMPTY_ROOT                 = Buffer.from('0000000000000000000000000000000000000000000000000000000000000000', 'hex');
 

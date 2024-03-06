@@ -10,7 +10,6 @@ import { toChecksumAddress } from 'ethereumjs-util';
 // Components
 import { Instructions } from './Instructions';
 import { NumberInput } from './NumberInput';
-import { OperatingSystemButtons } from './OperatingSystemButtons';
 import { WorkflowPageTemplate } from '../../components/WorkflowPage/WorkflowPageTemplate';
 import { Alert } from '../../components/Alert';
 import { Button } from '../../components/Button';
@@ -55,42 +54,6 @@ export enum keysTool {
   'GUI',
   'CLISOURCE',
 }
-
-const AddressInputContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const AddressInput = styled.input`
-  height: 50px;
-  flex: 1;
-  font-size: 18px;
-  line-height: 24px;
-  color: #444444;
-  padding-left: 10px;
-  box-sizing: border-box;
-  background-color: ${(p: any) => p.theme.gray.lightest};
-  border-radius: ${(p: any) => p.theme.borderRadius};
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
-  ::-webkit-inner-spin-button,
-  ::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-  }
-  border: 1px solid #ddd;
-  display: inline-flex;
-  :focus {
-    outline: none;
-  }
-`;
-
-const AddressIndicator = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 2rem;
-`;
 
 const Highlight = styled.span`
   background: ${p => p.theme.green.medium};
@@ -137,9 +100,7 @@ const _GenerateKeysPage = ({
     mnemonicAcknowledgementChecked,
     setMnemonicAcknowledgementChecked,
   ] = useState<boolean>(workflow > WorkflowStep.GENERATE_KEY_PAIRS);
-  const [chosenOs, setChosenOs] = useState<operatingSystem>(
-    operatingSystem.LINUX
-  );
+  const [chosenOs] = useState<operatingSystem>(operatingSystem.LINUX);
   const [withdrawalAddress, setWithdrawalAddress] = useState<string>('');
 
   // Default to CLI on mainnet for now, once we have more confidence in it, switch to GUI as default.
@@ -148,13 +109,6 @@ const _GenerateKeysPage = ({
 
   const onCheckboxClick = (e: any) => {
     setMnemonicAcknowledgementChecked(e.target.checked);
-  };
-
-  const handleAddressChange = (e: any) => {
-    // Only allow hexadecimal characters and 'x' (for 0x prefix)
-    const re = /[^0-9a-fx]/gi;
-    const value = e.target.value.replace(re, '');
-    setWithdrawalAddress(value);
   };
 
   const isValidWithdrawalAddress = useMemo<boolean>(
@@ -166,12 +120,6 @@ const _GenerateKeysPage = ({
     if (!isValidWithdrawalAddress) return;
     setWithdrawalAddress(toChecksumAddress(withdrawalAddress));
   }, [isValidWithdrawalAddress, withdrawalAddress]);
-
-  const addressIndicatorEmoji = useMemo<string>(() => {
-    if (!withdrawalAddress) return '⬅';
-    if (isValidWithdrawalAddress) return '✅';
-    return '❌';
-  }, [withdrawalAddress, isValidWithdrawalAddress]);
 
   const handleSubmit = () => {
     if (workflow === WorkflowStep.GENERATE_KEY_PAIRS) {
@@ -211,63 +159,6 @@ const _GenerateKeysPage = ({
             </Text>
           </div>
         </NumValidatorContainer>
-      </Paper>
-      <Paper className="mt20">
-        <Heading level={2} size="small" color="blueMedium" className="mb20">
-          <FormattedMessage defaultMessage="Withdrawal address" />
-        </Heading>
-        <Text className="mb20">
-          <FormattedMessage
-            defaultMessage="You may choose to provide a withdrawal address with your initial
-            deposit to automatically enable reward payments and also the ability to fully
-            exit your funds at anytime (recommended). This address should be to a regular
-            Ethereum address and will be the only address funds can be sent to from your new
-            validator accounts, and cannot be changed once chosen."
-          />
-        </Text>
-        <Text className="mb20">
-          <FormattedMessage
-            defaultMessage="Paste your chosen address here to include it in the copy/paste CLI
-            command below:"
-          />
-        </Text>
-        <AddressInputContainer className="mb40">
-          <AddressInput
-            onChange={handleAddressChange}
-            value={withdrawalAddress}
-            placeholder="0x..."
-            maxLength={42}
-          />
-          <AddressIndicator>{addressIndicatorEmoji}</AddressIndicator>
-        </AddressInputContainer>
-        <Alert variant="error">
-          {isValidWithdrawalAddress ? (
-            <FormattedMessage
-              defaultMessage="Make sure you have control over this address as this cannot be changed.
-              Providing an account from a centralized exchange is not recommended."
-            />
-          ) : (
-            <FormattedMessage
-              defaultMessage="If this is not provided now, your deposited funds will remain
-              locked on the Beacon Chain until an address is provided. Unlocking
-              will require signing a message with your withdrawal keys,
-              generated from your mnemonic seed phrase (so keep it safe)."
-            />
-          )}
-        </Alert>
-      </Paper>
-      <Paper className="mt20">
-        <Heading level={2} size="small" color="blueMedium">
-          <FormattedMessage defaultMessage="What is your current operating system?" />
-        </Heading>
-        <Text className="mt20 mb40">
-          <FormattedMessage
-            defaultMessage="Choose the OS of the computer you're currently using. This will be the
-              computer you use to generate your keys. It doesn't need to be the OS
-              you want to use for your node."
-          />
-        </Text>
-        <OperatingSystemButtons chosenOs={chosenOs} setChosenOs={setChosenOs} />
       </Paper>
 
       <Instructions
@@ -357,7 +248,7 @@ const _GenerateKeysPage = ({
       </Paper>
 
       <ButtonContainer>
-        <Link to={routesEnum.selectClient}>
+        <Link to={routesEnum.acknowledgementPage}>
           <Button
             width={100}
             label={formatMessage({ defaultMessage: 'Back' })}

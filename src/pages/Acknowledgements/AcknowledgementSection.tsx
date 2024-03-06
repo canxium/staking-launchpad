@@ -70,7 +70,7 @@ export const AcknowledgementSection = ({
             label={formatMessage({ defaultMessage: 'Back' })}
           />
           <Link
-            to={routesEnum.selectClient}
+            to={routesEnum.generateKeysPage}
             onClick={() => {
               handleContinueClick(AcknowledgementIdsEnum.confirmation);
               handleSubmit();

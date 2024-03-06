@@ -30,8 +30,6 @@ import { Link } from '../../components/Link';
 import { Text } from '../../components/Text';
 import { WalletButton } from './WalletButton';
 import metamaskLogo from '../../static/metamask.svg';
-import portisLogo from '../../static/portis.svg';
-import fortmaticLogo from '../../static/fortmatic.svg';
 import { Paper } from '../../components/Paper';
 import { Heading } from '../../components/Heading';
 import { Dot } from '../../components/Dot';
@@ -41,12 +39,9 @@ import {
   WorkflowStep,
 } from '../../store/actions/workflowActions';
 import {
-  PORTIS_DAPP_ID,
-  ENABLE_RPC_FEATURES,
   IS_MAINNET,
   PRICE_PER_VALIDATOR,
   TICKER_NAME,
-  IS_NON_INFURA_TESTNET,
   FAUCET_URL,
 } from '../../utils/envVars';
 import { routeToCorrectWorkflowStep } from '../../utils/RouteToCorrectWorkflowStep';
@@ -474,28 +469,6 @@ const _ConnectWalletPage = ({
                   title="Metamask"
                   error={walletProvider === metamask ? error : undefined}
                 />
-                {!IS_NON_INFURA_TESTNET && (
-                  <WalletButton
-                    invalid={PORTIS_DAPP_ID === ''}
-                    selectedWallet={selectedWallet}
-                    setSelectedWallet={setSelectedWallet}
-                    logoSource={portisLogo}
-                    walletProvider={portis}
-                    title="Portis"
-                    error={walletProvider === portis ? error : undefined}
-                  />
-                )}
-                {!IS_NON_INFURA_TESTNET && (
-                  <WalletButton
-                    invalid={!ENABLE_RPC_FEATURES}
-                    selectedWallet={selectedWallet}
-                    setSelectedWallet={setSelectedWallet}
-                    logoSource={fortmaticLogo}
-                    walletProvider={fortmatic}
-                    title="Fortmatic"
-                    error={walletProvider === fortmatic ? error : undefined}
-                  />
-                )}
                 <MetamaskHardwareButton />
               </WalletButtonSubContainer>
             </Animated>

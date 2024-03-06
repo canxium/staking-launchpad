@@ -23,6 +23,8 @@ export enum NetworkChainId {
   'Sepolia' = 11155111,
   'Zhejiang' = 1337803,
   'Holesky' = 17000,
+  'Canxium' = 3003,
+  'Cerium' = 30103,
 }
 
 export const NetworkChainIdDict: { [id: string]: number } = {
@@ -32,6 +34,8 @@ export const NetworkChainIdDict: { [id: string]: number } = {
   Sepolia: 11155111,
   Zhejiang: 1337803,
   Holesky: 17000,
+  Canxium: 3003,
+  Cerium: 30103,
 };
 
 /*
@@ -46,6 +50,8 @@ const supportedNetworks = [
   NetworkChainId.Sepolia,
   NetworkChainId.Zhejiang,
   NetworkChainId.Holesky,
+  NetworkChainId.Canxium,
+  NetworkChainId.Cerium,
 ];
 
 // FIXME: disabled Portis for now
@@ -61,10 +67,12 @@ enum Testnet {
   'Sepolia',
   'Zhejiang',
   'Holesky',
+  'Cerium',
 }
 
 enum Mainnet {
   'Mainnet',
+  'Canxium',
 }
 
 export const NetworkNameToChainId: { [key: string]: NetworkChainId } = {
@@ -73,10 +81,12 @@ export const NetworkNameToChainId: { [key: string]: NetworkChainId } = {
   Goerli: NetworkChainId.Goerli,
   Zhejiang: NetworkChainId.Zhejiang,
   Holesky: NetworkChainId.Holesky,
+  Canxium: NetworkChainId.Canxium,
+  Cerium: NetworkChainId.Cerium,
 };
 
 export const TARGET_NETWORK_CHAIN_ID = IS_MAINNET
-  ? NetworkChainId.Mainnet
+  ? NetworkChainId.Canxium
   : NetworkNameToChainId[TESTNET_LAUNCHPAD_NAME];
 
 export const IS_GOERLI = TARGET_NETWORK_CHAIN_ID === NetworkChainId.Goerli;
@@ -95,7 +105,7 @@ export const portis: PortisConnector = new PortisConnector({
 
 export const fortmatic: FortmaticConnector = new FortmaticConnector({
   apiKey: FORTMATIC_KEY as string,
-  chainId: IS_MAINNET ? NetworkChainId.Mainnet : NetworkChainId.Goerli,
+  chainId: IS_MAINNET ? NetworkChainId.Canxium : NetworkChainId.Cerium,
   rpcUrl: RPC_URL,
 });
 

@@ -113,23 +113,6 @@ export const Footer = () => {
             </ButtonLink>
           </ButtonContainer>
         )}
-        <div className="col extra-links">
-          <Heading level={4}>
-            <FormattedMessage defaultMessage="More on staking" />
-          </Heading>
-          <Link to="https://ethereum.org/en/roadmap/">
-            <FormattedMessage defaultMessage="The Ethereum roadmap" />
-          </Link>
-          <Link to={routesEnum.phishingPage}>
-            <FormattedMessage defaultMessage="Avoid phishing" />
-          </Link>
-          <Link to="https://docs.google.com/spreadsheets/d/15tmPOvOgi3wKxJw7KQJKoUe-uonbYR6HF7u83LR5Mj4/edit#gid=842896204">
-            <FormattedMessage defaultMessage="Staking economics" />
-          </Link>
-          <Link to="https://github.com/runtimeverification/deposit-contract-verification/blob/96434de/deposit-contract-verification.pdf">
-            <FormattedMessage defaultMessage="Formal verification report" />
-          </Link>
-        </div>
       </FooterStyles>
     </RainbowBackground>
   );

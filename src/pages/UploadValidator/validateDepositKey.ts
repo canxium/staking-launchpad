@@ -15,6 +15,7 @@ import {
   ETHER_TO_GWEI,
   BEACONCHAIN_URL,
   MIN_DEPOSIT_AMOUNT,
+  MAX_DEPOSIT_AMOUNT,
   MIN_DEPOSIT_CLI_VERSION,
 } from '../../utils/envVars';
 
@@ -64,7 +65,7 @@ const validateFieldFormatting = (
   // check the deposit amount
   if (
     depositDatum.amount < MIN_DEPOSIT_AMOUNT ||
-    depositDatum.amount > 32 * ETHER_TO_GWEI
+    depositDatum.amount > MAX_DEPOSIT_AMOUNT * ETHER_TO_GWEI
   ) {
     return false;
   }

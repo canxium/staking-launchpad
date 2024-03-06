@@ -72,7 +72,7 @@ const _AcknowledgementPage = ({
 
   const handleSubmit = () => {
     if (workflow === WorkflowStep.OVERVIEW) {
-      dispatchWorkflowUpdate(WorkflowStep.SELECT_CLIENT);
+      dispatchWorkflowUpdate(WorkflowStep.GENERATE_KEY_PAIRS);
     }
   };
 

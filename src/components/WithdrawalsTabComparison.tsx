@@ -5,9 +5,9 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 // Components
 import { Heading } from './Heading';
+import { Link } from '../components/Link';
 import { Text } from './Text';
 import { Code } from './Code';
-import { WithdrawalCredentials } from './WithdrawalCredentials';
 
 const HashCode = styled(Code)`
   word-break: break-all;
@@ -85,24 +85,25 @@ export const WithdrawalsTabComparison: FC<IProps> = () => {
                 }}
               />
             </li>
-            <li>
-              <FormattedMessage
-                defaultMessage="{wagyuKeyGenGui}: if you provided a withdrawal address when generating your keys, you're good to go"
-                values={{
-                  wagyuKeyGenGui: (
-                    <strong>
-                      <FormattedMessage defaultMessage="Wagyu Key Gen GUI" />
-                    </strong>
-                  ),
-                }}
-              />
-            </li>
           </ul>
           <Text className="my20">
-            <FormattedMessage defaultMessage="Enter your validator index here to check if you're account is ready for withdrawals or not:" />
+            <FormattedMessage
+              defaultMessage="If you generate deposit data using {broadcastLink}, we already enable withdrawal address for you."
+              values={{
+                broadcastLink: (
+                  <Link
+                    primary
+                    inline
+                    to={
+                      'https://hub.docker.com/repository/docker/canxium/staking-deposit-cli/general'
+                    }
+                  >
+                    Staking CLI Docker
+                  </Link>
+                ),
+              }}
+            />
           </Text>
-
-          <WithdrawalCredentials />
         </section>
       </Tab>
       <Tab
@@ -119,7 +120,7 @@ export const WithdrawalsTabComparison: FC<IProps> = () => {
               defaultMessage="If you’re preparing to make a deposit to activate a new
               validator, you can (and should) provide a withdrawal address with your initial deposit. This is
               done at time of key generation, and is then included in your deposit data json file {depositData}
-              which is submitted with your 32 ETH deposit transaction."
+              which is submitted with your 909 CAU deposit transaction."
               values={{
                 depositData: (
                   <Code>
@@ -151,13 +152,15 @@ export const WithdrawalsTabComparison: FC<IProps> = () => {
             </li>
             <li>
               <FormattedMessage
-                defaultMessage="{wagyuKeyGenGui}: This software is being updated to require users to provide a withdrawal address during key generation. In the meantime, you may have to check “Advanced” during setup to enter a withdrawal address."
+                defaultMessage="{stakingDepositCli}: This is done by using the “eth1 withdrawal address”
+                ({eth1WithdrawalAddress}) flag when generating your keys with the Staking Deposit CLI Docker."
                 values={{
-                  wagyuKeyGenGui: (
+                  stakingDepositCli: (
                     <strong>
-                      <FormattedMessage defaultMessage="Wagyu Key Gen GUI" />
+                      <FormattedMessage defaultMessage="Staking CLI Docker" />
                     </strong>
                   ),
+                  eth1WithdrawalAddress: <Code>WITHDRAWAL_ADDRESS</Code>,
                 }}
               />
             </li>

@@ -19,7 +19,7 @@ export const Phishing = () => {
     <PageTemplate title={formatMessage({ defaultMessage: 'Avoid phishing' })}>
       <Text className="mt10">
         <FormattedMessage
-          defaultMessage="Phishing is a very real risk for Ethereum validators and, unfortunately,
+          defaultMessage="Phishing is a very real risk for validators and, unfortunately,
         many people will lose funds due to these attacks."
         />
       </Text>
@@ -34,9 +34,9 @@ export const Phishing = () => {
                 defaultMessage="Does the site asking you for your {ethAmount} deposit have a URL you
                 expect?"
                 values={{
-                  ethAmount: `${PRICE_PER_VALIDATOR} ETH`,
+                  ethAmount: `${PRICE_PER_VALIDATOR} CAU`,
                 }}
-                description="{ethAmount} will generally refer to 32 ETH"
+                description="{ethAmount} will generally refer to 32 CAU"
               />
             </Text>
           </li>
@@ -64,13 +64,10 @@ export const Phishing = () => {
             <Text className="mt10">
               <FormattedMessage
                 defaultMessage="Cross check the deposit contract address against other websites – for example: Reddit,
-                Twitter, and GitHub. There's also a list of trusted sources on {ethereumorg}"
+                Twitter, and GitHub."
                 values={{
                   ethereumorg: (
-                    <Link
-                      inline
-                      to="https://ethereum.org/en/staking/deposit-contract/"
-                    >
+                    <Link inline to="https://canxium.org/">
                       ethereum.org
                     </Link>
                   ),
@@ -81,7 +78,7 @@ export const Phishing = () => {
           </li>
           <li>
             <Text className="mt10">
-              <FormattedMessage defaultMessage="Check the deposit contract on your favorite Ethereum block explorer:" />
+              <FormattedMessage defaultMessage="Check the deposit contract on your favorite block explorer:" />
             </Text>
             <ul>
               <li>
@@ -114,7 +111,7 @@ export const Phishing = () => {
           </li>
           <li>
             <Text className="mt10">
-              <FormattedMessage defaultMessage="Check your favorite Beacon Chain block explorer:" />
+              <FormattedMessage defaultMessage="Check your favorite Hybrid Chain block explorer:" />
             </Text>
             <ul>
               <li>

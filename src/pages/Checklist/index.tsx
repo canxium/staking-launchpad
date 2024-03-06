@@ -19,12 +19,6 @@ import {
 } from '../../utils/envVars';
 import { ClientCard } from '../Congratulations/ClientCard';
 import PrysmaticBg from '../../static/prysmatic-bg.png';
-import LighthouseBg from '../../static/lighthouse-bg.png';
-import NimbusBg from '../../static/nimbus-bg.png';
-import TekuBg from '../../static/teku-bg.png';
-import BesuBg from '../../static/besu-bg.png';
-import NethermindBg from '../../static/nethermind-bg.png';
-import ErigonBg from '../../static/erigon-bg.png';
 import GethBg from '../../static/geth-bg.png';
 import { routesEnum } from '../../Routes';
 import { Code } from '../../components/Code';
@@ -138,12 +132,6 @@ const SectionHeader = styled.div`
   }
 `;
 
-const RainbowHeader = styled(SectionHeader as any)`
-  margin: 3rem 1rem 1rem;
-  background-image: ${p =>
-    `linear-gradient(to right, ${p.theme.rainbowLight})`};
-`;
-
 const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
@@ -244,131 +232,33 @@ export const Checklist = () => {
     defaultUdp: 30303,
   };
 
-  const defaultConsensusPorts: {
-    defaultTcp: number;
-    defaultUdp: number;
-  } = {
-    defaultTcp: 9000,
-    defaultUdp: 9000,
-  };
-
   const clientInfo: Client[] = _shuffle([
     {
-      header: 'Besu',
+      header: 'go-canxium',
       text: formatMessage({
         defaultMessage:
-          'Hyperledger Besu is an open-source Ethereum client developed under the Apache 2.0 license and written in Java.',
-      }),
-      imgUrl: BesuBg,
-      url: routesEnum.besu,
-      linkText: formatMessage({
-        defaultMessage: 'Configure Besu',
-      }),
-      layer: layerEnum.execution,
-      discord: 'https://discord.gg/hyperledger',
-      ...defaultExecutionPorts,
-      jwtUrl:
-        'https://besu.hyperledger.org/en/stable/public-networks/reference/cli/options/#engine-jwt-secret',
-    },
-    {
-      header: 'Nethermind',
-      text: formatMessage({
-        defaultMessage:
-          'Nethermind is a robust client built on .NET core designed for performance, versatility and customizability.',
-      }),
-      imgUrl: NethermindBg,
-      url: routesEnum.nethermind,
-      linkText: formatMessage({
-        defaultMessage: 'Configure Nethermind',
-      }),
-      layer: layerEnum.execution,
-      discord: 'https://discord.gg/PaCMRFdvWT',
-      ...defaultExecutionPorts,
-      jwtUrl:
-        'https://docs.nethermind.io/nethermind/first-steps-with-nethermind/running-nethermind-post-merge#jwt-secrets',
-    },
-    {
-      header: 'Erigon',
-      text: formatMessage({
-        defaultMessage:
-          'Erigon is an execution client on the efficiency frontier, written in Go.',
-      }),
-      imgUrl: ErigonBg,
-      url: routesEnum.erigon,
-      linkText: formatMessage({
-        defaultMessage: 'Configure Erigon',
-      }),
-      layer: layerEnum.execution,
-      discord: 'https://github.com/ledgerwatch/erigon#erigon-discord-server',
-      ...defaultExecutionPorts,
-      jwtUrl:
-        'https://github.com/ledgerwatch/erigon#beacon-chain-consensus-layer',
-    },
-    {
-      header: 'Geth',
-      text: formatMessage({
-        defaultMessage:
-          'Geth is one of the three original implementations of the Ethereum protocol, written in Go.',
+          'go-canxium is the only original implementations of the Canxium protocol, written in Go.',
       }),
       imgUrl: GethBg,
       url: routesEnum.geth,
       linkText: formatMessage({
-        defaultMessage: 'Configure Geth',
+        defaultMessage: 'Configure go-canxium',
       }),
       layer: layerEnum.execution,
       discord: 'https://discord.gg/nthXNEv',
       ...defaultExecutionPorts,
-      jwtUrl: 'https://geth.ethereum.org/docs/interface/consensus-clients',
+      jwtUrl: 'https://github.com/canxium/go-canxium',
     },
     {
-      header: 'Lighthouse',
+      header: 'Neon (Prysm fork)',
       text: formatMessage({
         defaultMessage:
-          'Lighthouse is a consensus client implementation, written in Rust with a heavy focus on speed and security.',
-      }),
-      imgUrl: LighthouseBg,
-      url: routesEnum.lighthouse,
-      linkText: formatMessage({
-        defaultMessage: 'Configure Lighthouse',
-      }),
-      layer: layerEnum.consensus,
-      discord: 'https://discord.gg/uC7TuaH',
-      ...defaultConsensusPorts,
-      jwtUrl:
-        'https://lighthouse-book.sigmaprime.io/merge-migration.html#connecting-to-an-execution-engine',
-      feeRecipientUrl:
-        'https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html',
-      metricsUrl: 'https://github.com/sigp/lighthouse-metrics',
-    },
-    {
-      header: 'Nimbus',
-      text: formatMessage({
-        defaultMessage:
-          'Nimbus is a research project and a consensus client implementation for Ethereum designed to perform well on embedded systems and personal mobile devices.',
-      }),
-      imgUrl: NimbusBg,
-      url: routesEnum.nimbus,
-      linkText: formatMessage({
-        defaultMessage: 'Configure Nimbus',
-      }),
-      layer: layerEnum.consensus,
-      discord: 'https://discord.gg/YbTCNat',
-      ...defaultConsensusPorts,
-      jwtUrl:
-        'https://nimbus.guide/eth1.html#3-pass-the-url-and-jwt-secret-to-nimbus',
-      feeRecipientUrl: 'https://nimbus.guide/suggested-fee-recipient.html',
-      metricsUrl: 'https://nimbus.guide/metrics-pretty-pictures.html',
-    },
-    {
-      header: 'Prysm',
-      text: formatMessage({
-        defaultMessage:
-          'Prysm is a Go consensus client implementation of the Ethereum protocol with a focus on usability, security, and reliability.',
+          'neon is a Go consensus client implementation of the canxium protocol with a focus on usability, security, and reliability.',
       }),
       imgUrl: PrysmaticBg,
       url: routesEnum.prysm,
       linkText: formatMessage({
-        defaultMessage: 'Configure Prysm',
+        defaultMessage: 'Configure Neon',
       }),
       layer: layerEnum.consensus,
       discord: 'https://discord.gg/z9efH7e',
@@ -379,26 +269,6 @@ export const Checklist = () => {
         'https://docs.prylabs.network/docs/execution-node/fee-recipient',
       metricsUrl:
         'https://docs.prylabs.network/docs/prysm-usage/monitoring/grafana-dashboard/',
-    },
-    {
-      header: 'Teku',
-      text: formatMessage({
-        defaultMessage:
-          'PegaSys Teku is a Java-based Ethereum consensus client built to meet institutional needs and security requirements.',
-      }),
-      imgUrl: TekuBg,
-      url: routesEnum.teku,
-      linkText: formatMessage({
-        defaultMessage: 'Configure Teku',
-      }),
-      layer: layerEnum.consensus,
-      discord: 'https://discord.gg/7hPv2T6',
-      ...defaultConsensusPorts,
-      jwtUrl:
-        'https://docs.teku.consensys.net/get-started/connect/mainnet#1-generate-the-shared-secret',
-      feeRecipientUrl:
-        'https://docs.teku.consensys.net/reference/cli#validators-proposer-default-fee-recipient',
-      metricsUrl: 'https://docs.teku.consensys.net/how-to/monitor/use-metrics',
     },
   ]);
 
@@ -418,24 +288,6 @@ export const Checklist = () => {
       <div id="top" />
       <Subtitle>
         <FormattedMessage defaultMessage="This checklist will help you understand the role of a validator and prepare you for the role." />
-        <Text className="mt10">
-          <FormattedMessage
-            defaultMessage="Visit EthStaker on {discord} or {reddit} at any time during your setup for some friendly help!"
-            values={{
-              discord: (
-                <Link primary inline to="https://dsc.gg/ethstaker">
-                  Discord
-                </Link>
-              ),
-              reddit: (
-                <Link primary inline to="https://reddit.com/r/ethstaker">
-                  Reddit
-                </Link>
-              ),
-            }}
-            description="{variables} are social media platform links to Discord and Reddit (do not translate names)"
-          />
-        </Text>
       </Subtitle>
       <CardContainer>
         <StyledLink to="#section-one" inline isTextLink={false}>
@@ -507,18 +359,12 @@ export const Checklist = () => {
                   {consensusClient}."
                   values={{
                     executionClient: (
-                      <Link
-                        to="https://ethereum.org/en/glossary/#execution-client"
-                        inline
-                      >
+                      <Link to="https://github.com/canxium/go-canxium" inline>
                         <FormattedMessage defaultMessage="execution client" />
                       </Link>
                     ),
                     consensusClient: (
-                      <Link
-                        to="https://ethereum.org/en/glossary/#consensus-client"
-                        inline
-                      >
+                      <Link to="https://github.com/canxium/neon" inline>
                         <FormattedMessage defaultMessage="consensus client" />
                       </Link>
                     ),
@@ -529,17 +375,12 @@ export const Checklist = () => {
             </li>
             <li className="py5">
               <Text>
-                <FormattedMessage defaultMessage="Since the Merge, third-party providers (such as Infura and Alchemy) are no longer viable options to outsource execution layer responsibilities. All stakers must run both an execution and a consensus client to properly attest to the network." />
-              </Text>
-            </li>
-            <li className="py5">
-              <Text>
                 <FormattedMessage
-                  defaultMessage="As of {date}, you'll need ~1TB for the Mainnet execution chain data alone (growing at >1GB/day)."
+                  defaultMessage="As of {date}, you'll need ~10GB for the Mainnet execution chain data alone. Please allocate at least 80GB free space for canxium, and always monitor the free space incase canxium growth more day by day. "
                   values={{
                     date: (
                       <FormattedDate
-                        value={new Date(2022, 4)}
+                        value={new Date(2024, 2)}
                         year="numeric"
                         month="long"
                       />
@@ -550,24 +391,7 @@ export const Checklist = () => {
             </li>
             <li className="py5">
               <Text>
-                <FormattedMessage
-                  defaultMessage="Ethereum had its genesis on July 30, 2015. It is growing in size over time, and the introduction of Danksharding will also increase storage, memory, and bandwidth requirements."
-                  values={{
-                    date: (
-                      <FormattedDate
-                        value={new Date(Date.UTC(2015, 6, 30, 3, 26, 13))}
-                        year="numeric"
-                        month="long"
-                        day="2-digit"
-                      />
-                    ),
-                  }}
-                />
-              </Text>
-            </li>
-            <li className="py5">
-              <Text>
-                <FormattedMessage defaultMessage="You'll need SSD storage to consistently handle necessary read/write speeds." />
+                <FormattedMessage defaultMessage="You'll need a 80 SSD storage to consistently handle necessary read/write speeds." />
               </Text>
             </li>
             <li className="py5">
@@ -607,22 +431,6 @@ export const Checklist = () => {
             <li className="py5">
               <Text>
                 <FormattedMessage defaultMessage="Ensure your bandwidth can't be throttled and isn't capped so your node stays in sync and will be ready to validate when called." />
-              </Text>
-            </li>
-            <li className="py5">
-              <Text>
-                <FormattedMessage
-                  defaultMessage="You need enough upload bandwidth too. As of {date} this is ~1.2-1.3 GB download and ~0.9-1 GB upload per hour, and is likely to increase."
-                  values={{
-                    date: (
-                      <FormattedDate
-                        value={new Date(2022, 4)}
-                        year="numeric"
-                        month="long"
-                      />
-                    ),
-                  }}
-                />
               </Text>
             </li>
           </ul>
@@ -1477,25 +1285,6 @@ export const Checklist = () => {
             }
           />
         </section>
-        <RainbowHeader>
-          <FormattedMessage
-            defaultMessage="If you have questions, EthStaker community is a good place to get help!
-                You can find support on {discord} or {reddit}."
-            values={{
-              discord: (
-                <Link primary inline to="https://dsc.gg/ethstaker">
-                  Discord
-                </Link>
-              ),
-              reddit: (
-                <Link primary inline to="https://reddit.com/r/ethstaker">
-                  Reddit
-                </Link>
-              ),
-            }}
-            description="{variables} social media platform links to Discord and Reddit (do not translate names)"
-          />
-        </RainbowHeader>
       </ChecklistPageStyles>
     </PageTemplate>
   );

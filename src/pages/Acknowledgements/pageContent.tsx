@@ -26,13 +26,13 @@ export const pageContent = {
     content: (
       <>
         <Text size="medium" className="my10">
-          <FormattedMessage defaultMessage="Ethereum uses proof-of-stake to reach consensus." />
+          <FormattedMessage defaultMessage="Canxium uses proof-of-stake to reach consensus." />
         </Text>
         <Text size="medium" className="my10">
           <FormattedMessage
             defaultMessage="For this, we need active participants—known as validators—to
               propose, verify, and vouch for the validity of blocks. In exchange, honest
-              validators receive financial rewards."
+              validators may receive financial rewards."
           />
         </Text>
         <Text size="medium" className="my10">
@@ -40,25 +40,11 @@ export const pageContent = {
             defaultMessage="Importantly, as a validator you'll need to post {TICKER_NAME} as
               collateral—in other words, have some funds at stake. The only way to become a
               validator is to make a one-way {TICKER_NAME} transaction to the deposit contract
-              on the {NETWORK_NAME} execution layer. The Beacon Chain (consensus layer) is used
+              on the {NETWORK_NAME} execution layer. The Hybrid Chain (consensus layer) is used
               in parallel to keep track of all validator activity."
             values={{ TICKER_NAME, NETWORK_NAME }}
           />
         </Text>
-        <Link
-          to="https://ethereum.org/en/roadmap/beacon-chain/"
-          className="my10"
-          primary
-        >
-          <FormattedMessage defaultMessage="More on the Beacon Chain" />
-        </Link>
-        <Link
-          to="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/"
-          className="my10"
-          primary
-        >
-          <FormattedMessage defaultMessage="More on proof of stake" />
-        </Link>
       </>
     ),
     acknowledgementText: (
@@ -71,14 +57,14 @@ export const pageContent = {
       <>
         <Text size="medium" className="my10">
           <FormattedMessage
-            defaultMessage="To become a validator on the Beacon Chain, you need to deposit
+            defaultMessage="To become a validator on the Hybrid Chain, you need to deposit
               {PRICE_PER_VALIDATOR} {TICKER_NAME} per validator that you wish to run."
             values={{ PRICE_PER_VALIDATOR, TICKER_NAME }}
           />
         </Text>
         <Text size="medium" className="my20">
           <FormattedMessage
-            defaultMessage="Like all Ethereum transactions, deposits are non-reversible, but
+            defaultMessage="Like all Canxium transactions, deposits are non-reversible, but
             the ability to withdrawal your funds via a separate process after depositing remains
             under your control."
           />
@@ -88,7 +74,7 @@ export const pageContent = {
     acknowledgementText: (
       <FormattedMessage
         defaultMessage="I understand that I need to deposit {PRICE_PER_VALIDATOR} {TICKER_NAME}
-          onto the Beacon Chain to become a validator. Withdrawing deposited {TICKER_NAME} from the Beacon Chain is accomplished via a separate process."
+          onto the Hybrid Chain to become a validator. Withdrawing deposited {TICKER_NAME} from the Hybrid Chain is accomplished via a separate process."
         values={{ PRICE_PER_VALIDATOR, TICKER_NAME }}
       />
     ),
@@ -100,19 +86,9 @@ export const pageContent = {
         <Text size="medium" className="my10">
           <FormattedMessage
             defaultMessage="You'll only get your full rewards if your validator is online and up
-              to date. This is your responsibility. If your validator goes offline you'll be
-              penalized. The penalties for being offline are roughly equal to the rewards for
-              actively participating."
+              to date. This is your responsibility."
           />
         </Text>
-        <Link
-          to="https://docs.google.com/spreadsheets/d/15tmPOvOgi3wKxJw7KQJKoUe-uonbYR6HF7u83LR5Mj4/edit#gid=842896204"
-          className="my10"
-          primary
-          inline
-        >
-          <FormattedMessage defaultMessage="More on Ethereum staking economics" />
-        </Link>
       </>
     ),
     acknowledgementText: (
@@ -132,13 +108,6 @@ export const pageContent = {
         <Text size="medium" className="my10">
           <FormattedMessage defaultMessage="*Simply being offline with an otherwise healthy network does not result in slashing, but will result in small inactivity penalties." />
         </Text>
-        <Link
-          to="https://github.com/ethereum/consensus-specs"
-          className="my10"
-          primary
-        >
-          <FormattedMessage defaultMessage="The Ethereum consensus layer specification" />
-        </Link>
         <Link shouldOpenNewTab to="/faq" className="my10" primary>
           <FormattedMessage defaultMessage="More on slashing risks" />
         </Link>

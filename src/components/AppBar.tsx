@@ -3,10 +3,10 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import styled from 'styled-components';
 import { Box, DropButton } from 'grommet';
-import { Menu, Language, FormDown } from 'grommet-icons';
+import { Menu, FormDown } from 'grommet-icons';
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
-import EthDiamond from '../static/eth-diamond-plain.svg';
+import EthDiamond from '../static/icon.png';
 import { web3ReactInterface } from '../pages/ConnectWallet';
 import {
   AllowedELNetworks,
@@ -17,13 +17,7 @@ import { Link } from './Link';
 import { Text } from './Text';
 import { routesEnum } from '../Routes';
 import { Heading } from './Heading';
-import {
-  IS_MAINNET,
-  NETWORK_NAME,
-  MAINNET_LAUNCHPAD_URL,
-  TESTNET_LAUNCHPAD_NAME,
-  TESTNET_LAUNCHPAD_URL,
-} from '../utils/envVars';
+import { IS_MAINNET, NETWORK_NAME } from '../utils/envVars';
 import { trimString } from '../utils/trimString';
 import useIntlNetworkName from '../hooks/useIntlNetworkName';
 import useMobileCheck from '../hooks/useMobileCheck';
@@ -145,15 +139,6 @@ const _AppBar = ({ location }: RouteComponentProps) => {
   }: web3ReactInterface = useWeb3React<Web3Provider>();
   const { locale } = useIntl();
   const { executionLayerName, consensusLayerName } = useIntlNetworkName();
-  const oppositeNetwork = IS_MAINNET ? (
-    <FormattedMessage
-      defaultMessage="{TESTNET_LAUNCHPAD_NAME} testnet"
-      values={{ TESTNET_LAUNCHPAD_NAME }}
-    />
-  ) : (
-    <FormattedMessage defaultMessage="Mainnet" />
-  );
-
   let network;
   let networkAllowed = false;
 
@@ -166,21 +151,7 @@ const _AppBar = ({ location }: RouteComponentProps) => {
     location.pathname,
   ]);
 
-  const isDropdownPage = React.useMemo(
-    () =>
-      pathname === routesEnum.lighthouse ||
-      pathname === routesEnum.nimbus ||
-      pathname === routesEnum.prysm ||
-      pathname === routesEnum.lodestar ||
-      pathname === routesEnum.teku,
-    [pathname]
-  );
-
   const mobile = useMobileCheck('1080px');
-  const switchLaunchpadUrl = IS_MAINNET
-    ? TESTNET_LAUNCHPAD_URL
-    : MAINNET_LAUNCHPAD_URL;
-
   const dropAlignInline = React.useMemo(
     () => (locale === 'ar' ? 'left' : 'right'),
     [locale]
@@ -233,42 +204,6 @@ const _AppBar = ({ location }: RouteComponentProps) => {
             <FormattedMessage defaultMessage="Deposit" />
           </BarLinkText>
         </Link>
-        <ValidatorDropdown
-          className="secondary-link"
-          label={
-            <BarLinkText level={4} margin="none" active={isDropdownPage}>
-              <FormattedMessage defaultMessage="Clients" />
-            </BarLinkText>
-          }
-          dropAlign={{ top: 'bottom', right: dropAlignInline }}
-          dropContent={
-            <Box pad="medium">
-              <Text className="my10">
-                <b>Execution clients</b>
-              </Text>
-              <Box pad="small">
-                <DropdownLink to={routesEnum.besu}>Besu</DropdownLink>
-                <DropdownLink to={routesEnum.erigon}>Erigon</DropdownLink>
-                <DropdownLink to={routesEnum.geth}>Geth</DropdownLink>
-                <DropdownLink to={routesEnum.nethermind}>
-                  Nethermind
-                </DropdownLink>
-              </Box>
-              <Text className="my10">
-                <b>Consensus clients</b>
-              </Text>
-              <Box pad="small">
-                <DropdownLink to={routesEnum.lighthouse}>
-                  Lighthouse
-                </DropdownLink>
-                <DropdownLink to={routesEnum.lodestar}>Lodestar</DropdownLink>
-                <DropdownLink to={routesEnum.nimbus}>Nimbus</DropdownLink>
-                <DropdownLink to={routesEnum.prysm}>Prysm</DropdownLink>
-                <DropdownLink to={routesEnum.teku}>Teku</DropdownLink>
-              </Box>
-            </Box>
-          }
-        />
         <Link to={routesEnum.checklistPage} className="secondary-link">
           <BarLinkText
             level={4}
@@ -311,23 +246,6 @@ const _AppBar = ({ location }: RouteComponentProps) => {
         </Link>
       </NavBarLinks>
       <NavLinksRight>
-        {!mobile && (
-          <Link to={routesEnum.languagesPage} className="secondary-link">
-            <BarLinkText
-              level={4}
-              margin="none"
-              className="bar-link-text"
-              active={pathname === routesEnum.languagesPage}
-            >
-              <FormattedMessage defaultMessage="Languages" />
-            </BarLinkText>
-          </Link>
-        )}
-        {mobile && (
-          <Link to={routesEnum.languagesPage} className="mx10">
-            <Language color="black" />
-          </Link>
-        )}
         {mobile && (
           <ValidatorDropdown
             className="secondary-link"
@@ -348,12 +266,6 @@ const _AppBar = ({ location }: RouteComponentProps) => {
                     <FormattedMessage defaultMessage="Launchpad network:" />{' '}
                     <b>{consensusLayerName}</b>
                   </span>
-                  <Link primary to={switchLaunchpadUrl}>
-                    <FormattedMessage
-                      defaultMessage="Switch to {oppositeNetwork} launchpad"
-                      values={{ oppositeNetwork }}
-                    />
-                  </Link>
                   <Text className="mt20">
                     <em>
                       <FormattedMessage defaultMessage="Visit this site on desktop to become a validator." />
@@ -419,12 +331,6 @@ const _AppBar = ({ location }: RouteComponentProps) => {
                       <FormattedMessage defaultMessage="This is a test network ⚠️" />
                     </Text>
                   )}
-                  <DropdownLink to={switchLaunchpadUrl}>
-                    <FormattedMessage
-                      defaultMessage="Switch to {oppositeNetwork} launchpad"
-                      values={{ oppositeNetwork }}
-                    />
-                  </DropdownLink>
                 </Box>
               </Card>
             }

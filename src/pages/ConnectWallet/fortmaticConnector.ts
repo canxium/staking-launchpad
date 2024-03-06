@@ -11,6 +11,8 @@ const chainIdToNetwork: { [network: number]: string } = {
   1: 'mainnet',
   3: 'ropsten',
   5: 'goerli',
+  3003: 'canxium',
+  30103: 'cerium',
 };
 
 interface FortmaticConnectorArguments {

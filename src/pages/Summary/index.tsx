@@ -195,18 +195,6 @@ const _SummaryPage = ({
           />
         </Text>
         <Row>
-          <Link
-            isTextLink={false}
-            to="https://ethereum.org/en/staking/deposit-contract/"
-            primary
-          >
-            <Button
-              width={420}
-              label={formatMessage({
-                defaultMessage: 'Check deposit contract address',
-              })}
-            />
-          </Link>
           <Link shouldOpenNewTab to={routesEnum.phishingPage} primary>
             <FormattedMessage defaultMessage="More on phishing" />
           </Link>

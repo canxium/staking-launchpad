@@ -132,8 +132,7 @@ export const Withdrawals = () => {
         <section>
           <Text>
             <FormattedMessage
-              defaultMessage="As of the Shanghai/Capella upgrade withdrawals have been enabled on
-              the Beacon Chain, with the inclusion of {eip}. This Ethereum Improvement Proposal
+              defaultMessage="Once fully switched over to PoS, Canxium will be upgraded to the next fork to allow withdrawals within a month, with the inclusion of {eip}. This fork
               enables rewards to be automatically withdrawn to the execution layer, and also
               provides a way for exited validators to unlock their entire balance—no gas
               required."
@@ -335,7 +334,7 @@ export const Withdrawals = () => {
                 defaultMessage="An {excessBalanceWithdrawal} is processed when an active validator has a maxed out
                 effective balance of {PRICE_PER_VALIDATOR} {TICKER_NAME}, and has a total balance over {PRICE_PER_VALIDATOR} {TICKER_NAME}.
                 A single validator cannot get rewards on excess balance over {PRICE_PER_VALIDATOR} {TICKER_NAME}, and thus these accounts will have
-                any extra balance automatically withdrawn to their Ethereum address."
+                any extra balance automatically withdrawn to their Canxium address."
                 values={{
                   excessBalanceWithdrawal: (
                     <strong>
@@ -362,7 +361,7 @@ export const Withdrawals = () => {
                 📝
               </span>{' '}
               <Text className="inline">
-                <FormattedMessage defaultMessage="It is not possible to manually request specific amounts of ETH to be withdrawn" />
+                <FormattedMessage defaultMessage="It is not possible to manually request specific amounts of CAU to be withdrawn" />
               </Text>
             </Alert>
           </section>
@@ -410,7 +409,7 @@ export const Withdrawals = () => {
               </Text>
               <Text className="mb10">
                 <FormattedMessage
-                  defaultMessage="Those looking to exit their validator from staking and withdrawal their ETH should
+                  defaultMessage="Those looking to exit their validator from staking and withdrawal their CAU should
                   check out the guide below that matches your setup:"
                 />
               </Text>
@@ -424,103 +423,11 @@ export const Withdrawals = () => {
                   <Link
                     primary
                     inline
-                    to="https://lighthouse-book.sigmaprime.io/voluntary-exit.html"
-                  >
-                    <FormattedMessage
-                      defaultMessage="Exiting a {client} validator"
-                      values={{ client: 'Lighthouse' }}
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    primary
-                    inline
-                    to="https://chainsafe.github.io/lodestar/reference/cli/#validator-voluntary-exit"
-                  >
-                    <FormattedMessage
-                      defaultMessage="Exiting a {client} validator"
-                      values={{ client: 'Lodestar' }}
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    primary
-                    inline
-                    to="https://nimbus.guide/voluntary-exit.html"
-                  >
-                    <FormattedMessage
-                      defaultMessage="Exiting a {client} validator"
-                      values={{ client: 'Nimbus' }}
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    primary
-                    inline
                     to="https://docs.prylabs.network/docs/wallet/exiting-a-validator"
                   >
                     <FormattedMessage
                       defaultMessage="Exiting a {client} validator"
                       values={{ client: 'Prysm' }}
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    primary
-                    inline
-                    to="https://docs.teku.consensys.net/Reference/CLI/Subcommands/Voluntary-Exit"
-                  >
-                    <FormattedMessage
-                      defaultMessage="Exiting a {client} validator"
-                      values={{ client: 'Teku' }}
-                    />
-                  </Link>
-                </li>
-              </ul>
-              <Text className="mb10">
-                <strong>
-                  <FormattedMessage defaultMessage="Alternative node tooling:" />
-                </strong>
-              </Text>
-              <ul>
-                <li>
-                  <Link
-                    primary
-                    inline
-                    to="https://forum.dappnode.io/t/how-to-exit-an-eth2-validator/786"
-                  >
-                    <FormattedMessage
-                      defaultMessage="Exiting a {software} validator"
-                      values={{ software: 'DAppNode' }}
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    primary
-                    inline
-                    to="https://eth-docker.net/Support/Exit/"
-                  >
-                    <FormattedMessage
-                      defaultMessage="Exiting a {software} validator"
-                      values={{ software: 'eth-docker' }}
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    primary
-                    inline
-                    to="https://docs.rocketpool.net/guides/node/cli-intro.html#minipool-commands"
-                  >
-                    <FormattedMessage
-                      defaultMessage="Exiting a {software} minipool"
-                      values={{ software: 'Rocket Pool' }}
-                      description="A minipool is a Rocket Pool-specific term for a validator that shares stake with others"
                     />
                   </Link>
                 </li>
@@ -563,7 +470,7 @@ export const Withdrawals = () => {
               </Text>
             </Alert>
             <Text className="mb10">
-              <FormattedMessage defaultMessage="Once a validator has exited and its full balance has been withdrawn, any additional funds deposited to that validator will automatically be transferred to the withdrawal address during the next validator sweep. To re-stake ETH, a new validator must be activated." />
+              <FormattedMessage defaultMessage="Once a validator has exited and its full balance has been withdrawn, any additional funds deposited to that validator will automatically be transferred to the withdrawal address during the next validator sweep. To re-stake CAU, a new validator must be activated." />
             </Text>
           </section>
         </section>
@@ -583,7 +490,7 @@ export const Withdrawals = () => {
             </Anchor>
             <Text className="mb10">
               <FormattedMessage
-                defaultMessage="Ethereum users are used to transactions being executed in a manual way—if
+                defaultMessage="Canxium users are used to transactions being executed in a manual way—if
                 you want to transfer funds, you have to sign a transaction and pay the gas."
               />
             </Text>
@@ -628,7 +535,7 @@ export const Withdrawals = () => {
             <Text className="mb10">
               <FormattedMessage
                 defaultMessage="On a never-ending loop, every single validator account is continuously evaluated for
-                eligible ETH withdrawals (of which there are two types, more on this below). Validators are processed
+                eligible CAU withdrawals (of which there are two types, more on this below). Validators are processed
                 in order by index number, originally starting at 0, with each subsequent proposer picking up where the last one left off."
               />
             </Text>
@@ -690,7 +597,7 @@ export const Withdrawals = () => {
               <FormattedMessage
                 defaultMessage="Similarly, there is also an {exitQueue}, which limits how quickly validators can
                 {leave} the network. This is for security reasons. Given each validator is limited to a max effective
-                balance of {PRICE_PER_VALIDATOR} {TICKER_NAME}, this prevents large portions of the ETH from potentially
+                balance of {PRICE_PER_VALIDATOR} {TICKER_NAME}, this prevents large portions of the CAU from potentially
                 being used in an attack and then quickly exiting from the network all at once."
                 values={{
                   exitQueue: (
@@ -881,7 +788,7 @@ export const Withdrawals = () => {
             <Text className="mb10">
               <FormattedMessage
                 defaultMessage="A decision tree is followed to determine what type of withdrawal will be initiated.
-                If the validator being checked has ETH that is eligible to be withdrawn, it is added to the withdrawal
+                If the validator being checked has CAU that is eligible to be withdrawn, it is added to the withdrawal
                 queue. If there isn’t, the account is skipped."
               />
             </Text>

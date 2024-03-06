@@ -52,10 +52,6 @@ export const WorkflowProgressBar = ({ workflow }: Props): JSX.Element => {
       text: formatMessage({ defaultMessage: 'Advisories' }),
     },
     {
-      step: WorkflowStep.SELECT_CLIENT,
-      text: formatMessage({ defaultMessage: 'Choose client' }),
-    },
-    {
       step: WorkflowStep.GENERATE_KEY_PAIRS,
       text: formatMessage({ defaultMessage: 'Generate keys' }),
     },
