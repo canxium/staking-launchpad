@@ -239,6 +239,18 @@ export const pageContent = {
         >
           <FormattedMessage defaultMessage="Terms of service" />
         </Link>
+        <Text size="medium" className="my10">
+          <FormattedMessage defaultMessage="Make sure you double check the deposit contract address." />
+        </Text>
+        <Link
+          inline
+          shouldOpenNewTab
+          to="https://twitter.com/canxiumchain/status/1764838180141105606"
+          className="my10"
+          primary
+        >
+          <FormattedMessage defaultMessage="Deposit Contract Address" />
+        </Link>
       </>
     ),
     acknowledgementText: (

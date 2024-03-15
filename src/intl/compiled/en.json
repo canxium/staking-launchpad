@@ -1249,6 +1249,12 @@
       "value": "We can't detect MetaMask. Switch browsers or install MetaMask."
     }
   ],
+  "88tv3n": [
+    {
+      "type": 0,
+      "value": "Make sure you double check the deposit contract address."
+    }
+  ],
   "8BXroN": [
     {
       "type": 0,
@@ -2599,6 +2605,12 @@
     {
       "type": 0,
       "value": "Sign transaction with your wallet"
+    }
+  ],
+  "IRuyMs": [
+    {
+      "type": 0,
+      "value": "Deposit Contract Address"
     }
   ],
   "IWlazt": [

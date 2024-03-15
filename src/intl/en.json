@@ -452,6 +452,9 @@
   "82vl9l": {
     "message": "We can't detect MetaMask. Switch browsers or install MetaMask."
   },
+  "88tv3n": {
+    "message": "Make sure you double check the deposit contract address."
+  },
   "8BXroN": {
     "message": "Lodestar documentation"
   },
@@ -970,6 +973,9 @@
   },
   "IJw06E": {
     "message": "Sign transaction with your wallet"
+  },
+  "IRuyMs": {
+    "message": "Deposit Contract Address"
   },
   "IWlazt": {
     "message": "full withdrawal"
